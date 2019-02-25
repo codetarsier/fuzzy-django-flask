@@ -1,0 +1,16 @@
+
+.footer {
+    padding:20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f7f7f9;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.td-sm {
+    padding:10px; 
+    font-size: 0.7em;
+}

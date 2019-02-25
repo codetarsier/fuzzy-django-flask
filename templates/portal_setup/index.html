@@ -1,0 +1,39 @@
+{% extends 'portal_setup/base.html' %}
+
+{% block home_active %}active{% endblock home_active %}
+{% block content %}
+
+    <main role="main" class="container" style="margin-top:1em;">
+        <h3>Online Portals</h3>
+        <div class="row">
+          <div class="col-lg-12" style="margin-bottom: 10px;">
+            <div class="float-right">
+              <a href="/portals/add/"  class="btn btn-success btn-sm">+ Add new portal</a>          
+            </div>
+          </div>        
+        </div>
+
+        {% if portals %}
+        <ul class="list-group">
+            {% for portal in portals %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="badge badge-primary badge-pill"></span>
+              {{loop.index}}.  {{portal.portal_name}}
+              <span class="float-left">
+                  <a href="/portals/{{portal.id}}/"  class="btn btn-primary btn-sm">open</a>
+                  <a href="/portals/{{portal.id}}/edit/"  class="btn btn-dark btn-sm">edit</a>
+                  <a href="/portals/{{portal.id}}/delete/"  class="btn btn-danger btn-sm">delete</a>
+                  <a href="/api/v1/portals/{{portal.id}}/"  class="btn btn-secondary btn-sm">api</a>
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="alert alert-dismissible alert-secondary">
+            <strong>Oops!</strong> No portal exists. <a href="/portals/add/" class="alert-link">create one</a>.
+          </div>
+        {% endif %}
+        
+    </main>
+
+{% endblock content %}

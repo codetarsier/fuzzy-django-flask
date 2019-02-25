@@ -1,0 +1,10 @@
+.idea
+__pycache__/*
+portal_setup/__pycache__/*.pyc
+portal_setup/*.pyc
+common/*.pyc
+common/__pycache__/*.pyc
+config/__pycache__/*.pyc
+config/*.pyc
+config/secrets.json
+*.pyc

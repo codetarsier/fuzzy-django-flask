@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Portal Setup</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/portal_setup/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/portal_setup/css/bootstrap-select.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="/static/portal_setup/css/navbar-top-fixed.css" rel="stylesheet">
+    <link href="/static/portal_setup/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+      <a class="navbar-brand" href="/portals/">PORTAL SETUP</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% block home_active %}{% endblock home_active %}">
+            <a class="nav-link" href="/portals/">Home <span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/portals/">Portal Settings</a>
+          </li>
+        </ul>
+        <span>
+            <a  style="color:#fff !important" class="nav-link" href="/admin/">Admin</a>
+        </span>
+      </nav>
+
+
+    <main role="main" class="container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p class="mb-0"><strong>Message!</strong> {{ message }}</p>
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </main>
+
+
+    {% block content %}
+    {% endblock content %}
+
+
+    <div class="footer">
+      <h6><small>developed at </small>HOD.life</h6>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/portal_setup/js/jquery-3.2.1.slim.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/portal_setup/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="/static/portal_setup/js/popper.min.js"></script>
+    <script src="/static/portal_setup/js/bootstrap.min.js"></script>
+    <script src="/static/portal_setup/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/portal_setup/js/bootstrap-select.min.js"></script>
+
+  {% block external_js %}
+  {% endblock external_js %}
+
+  </body>
+</html>

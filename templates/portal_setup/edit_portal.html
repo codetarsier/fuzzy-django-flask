@@ -1,0 +1,34 @@
+{% extends 'portal_setup/base.html' %}
+
+{% block home_active %}active{% endblock home_active %}
+{% block content %}
+
+    <main role="main" class="container">
+    <div class="offset-md-2 col-md-8 jumbotron" style="padding: 2rem 2rem;">
+        <form action="/portals/{{portal.id}}/edit/" method="POST">
+                <fieldset>
+                  <legend>edit <span class="text-danger">{{portal.portal_name}}</span> portal</legend>
+                  <hr/>
+                  <div class="form-group">
+                    <label for="portalName">Portal Name</label>
+                    <input type="text" class="form-control" name="portal_name" id="portal_name" aria-describedby="Portal Name" placeholder="Enter Portal Name" value="{{portal.portal_name}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Portal Type</label>
+                    <select class="form-control" id="exampleSelect1">
+                      <option>Corporate</option>
+                      <option>Non-Corporate</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Portal Thumbnail</label>
+                    <input type="file" class="form-control-file" id="portalThumbnail" aria-describedby="portalThumbnail">
+                    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+        </form>
+    </div>    
+    </main>
+
+{% endblock content %}

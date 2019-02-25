@@ -1,0 +1,148 @@
+{% extends 'portal_setup/base.html' %}
+
+{% block home_active %}active{% endblock home_active %}
+{% block content %}
+
+<main role="main" class="container">
+    <div class="offset-md-2 col-md-8 jumbotron" style="padding: 2rem 2rem;">
+        <form action="/portals/add/" method="POST">
+            <fieldset>
+                <legend>Add Portal</legend>
+                <hr/>
+                <div class="form-group">
+                    <label>Portal Name</label>
+                    <input type="text" class="form-control" name="portal_name" id="portal_name" aria-describedby="Portal Name" placeholder="Enter Portal Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Select Company</label>
+                    <select name="company_id" class="form-control">
+                        {% for company in active_companies %}
+                        <option value="{{company.id}}">{{company.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Select City</label>
+                    <select multiple name="portal_cities" class="form-control selectpicker" data-live-search="true">
+                        {% for city in active_cities %}
+                        <option value={{city.city_id}}>{{city.city_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Enable Pincode</label>&nbsp;
+                    <input type="checkbox" name="is_pincode_enable" value="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Select Product</label>
+                    <select name="portal_products" class="form-control selectpicker" multiple data-live-search="true">
+                        {% for product in products %}
+                        <option value="{{product.id}}">{{product.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">For Home</label>&nbsp;
+                    <input type="checkbox" id="is_home" name="is_home" value="true">
+                </div>
+
+                <div id="home_health_check" class="form-group d-none">
+                    <label for="exampleSelect1">Select Home Health Check Options</label>
+                    <select  name="portal_home_health_check_for_ids" class="form-control selectpicker" multiple data-live-search="true">
+                        {% for home_health_check in home_health_check_options %}
+                        <option value="{{home_health_check.id}}">{{home_health_check.name}}</option>
+                        {% endfor %}
+                    </select>
+                    Enable slot booking <input type="checkbox" name="is_enable_slot_home" value="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">For Office</label>&nbsp;
+                    <input type="checkbox" id="is_office" name="is_office" value="true">
+                </div>
+
+                <div id="venue" class="form-group d-none">
+                    <label for="exampleSelect1">Select Venue</label>
+                    <select name="portal_venues" class="form-control selectpicker" multiple data-live-search="true">
+                        {% for venue in venues %}
+                        <option value="{{venue.id}}">{{venue.name}}</option>
+                        {% endfor %}
+                    </select>
+                    Enable slot booking <input type="checkbox" name="is_enable_slot_office" value="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Payment Type</label><br>
+                    <input type="checkbox" name="is_pay_now" value="is_pay_now"> Pay Now &nbsp;
+                    <input type="checkbox" name="is_pay_later" value="is_pay_later"> Pay Later
+                </div>
+
+                <div class="form-group">
+                    <label>Home Visit Charges</label>
+                    <input type="text" class="form-control" name="home_visit_charges" id="home_visit_charges" aria-describedby="Home Visit Charges"
+                           placeholder="Enter Home Visit Charges">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Portal Type</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option>Corporate</option>
+                        <option>Non-Corporate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Portal Thumbnail</label>
+                    <input type="file" class="form-control-file" id="portalThumbnail" aria-describedby="portalThumbnail">
+                    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Company URL</label>
+                    <input type="text" class="form-control" name="company_url" aria-describedby="Company URL" placeholder="Enter Company URL">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">View Bookings</label>&nbsp;
+                    <input type="checkbox" name="is_view_bookings" value="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleSelect1">Is For Demo</label>&nbsp;
+                    <input type="checkbox" name="is_for_demo" value="true">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </fieldset>
+        </form>
+    </div>
+</main>
+
+{% endblock content %}
+
+{% block external_js %}
+<script>
+    $("#is_home").change(function() {
+        var ischecked= $(this).is(':checked');
+        if(ischecked)
+            $("#home_health_check").removeClass("d-none");
+        else
+            $("#home_health_check").addClass("d-none");
+    });
+
+    $("#is_office").change(function() {
+        var ischecked= $(this).is(':checked');
+        if(ischecked)
+            $("#venue").removeClass("d-none");
+        else
+            $("#venue").addClass("d-none");
+    });
+</script>
+{% endblock external_js %}
+

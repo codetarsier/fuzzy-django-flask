@@ -1,0 +1,7 @@
+{
+    "python.venvPath": "/home/ashish/.virtualenvs/",
+    "python.venvFolders": [
+        "/home/ashish/.virtualenvs/",
+    ],
+    "python.pythonPath": "/home/ashish/.virtualenvs/company_portal/bin/python"
+}

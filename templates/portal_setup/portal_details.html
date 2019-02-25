@@ -1,0 +1,34 @@
+{% extends 'portal_setup/base.html' %}
+
+{% block home_active %}active{% endblock home_active %}
+{% block content %}
+    {% if portal %}
+        <main role="main" class="container">
+            <div class=" offset-3">
+                <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                    <div class="card-header">NAME : <strong>{{portal.portal_name|title}}</strong></div>
+                    <div class="card-body">
+                        <h4 class="card-title">ID : {{portal.id}}</h4>
+                        <p class="card-text">{{portal.portal_name|title}}</p>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <a href="/portals/" class="btn btn-primary">go back</a>
+                </div>
+            </div>
+        </main>
+    {% else %}
+        <main role="main" class="container">
+            <div class=" offset-3">
+                <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+                    <div class="card-header"><strong>Portal Does Not Exist.</strong></div>
+                </div>
+                <div class="text-left">
+                    <a href="/portals/" class="btn btn-primary">go back</a>
+                </div>
+            </div>
+        </main>
+    
+    {% endif %}
+
+{% endblock content %}
